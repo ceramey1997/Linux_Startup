@@ -6,7 +6,6 @@ import sys
 import argparse
 from time import sleep
 from subprocess import Popen
-import pyautogui
 
 email_hipchat_urls = ["https://owa.adtran.com/owa/auth/logon.aspx?replaceCurrent=1&url=https%3a%2f%2fowa.adtran.com%2fowa%2f", "https://adtran-cn.hipchat.com/home"]
 
@@ -37,10 +36,6 @@ class Important_Programs_Open():
     def open_slack(self):
         os.chdir("/usr/bin")
         Popen(['slack'])
-    
-    #open's one terminal
-    def open_terminal(self):
-        pyautogui.hotkey('ctrl', 'alt', 't')
 
 
 if __name__ == '__main__':
@@ -50,7 +45,6 @@ if __name__ == '__main__':
     parser.add_argument("--w", action='append', default=[], help="url to website you would like to open")
     parser.add_argument("--s", action='store_true', help= "open slack")
     parser.add_argument("--a", help="opens slack, email, hipchat, hexchat, and the given IDE")
-    parser.add_argument("--t", action='store_true', help= "open's a terminal... even though that is useless at this point")
     args = parser.parse_args()
 
     if args.w:
@@ -65,8 +59,6 @@ if __name__ == '__main__':
         programs.open_slack()
         sleep(6)
         programs.open_irc()
-    if args.t:
-        programs.open_terminal()
 
 
 
